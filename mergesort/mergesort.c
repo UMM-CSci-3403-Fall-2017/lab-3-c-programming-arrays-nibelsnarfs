@@ -14,7 +14,7 @@ int needsSorting(int rangeSize){
 
 void mergeRanges(int* values, int startIndex, int midPoint, int endIndex){
         const int rangeSize = endIndex - startIndex;
-        int* destination = (int*) calloc(rangeSize+1, sizeof(int));
+        int* destination = (int*) calloc(rangeSize, sizeof(int));
         int firstIndex = startIndex;
         int secondIndex = midPoint;
         int copyIndex = 0;
