@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include "mergesort.h"
 
+// Looks at the size of the range and returns a one if it is greater than 2 and thus the array needs sorting. 
+// Returns a 0 if smaller and not in need of sorting
 int needsSorting(int rangeSize){
         if(rangeSize >= 2){
                 return 1;
@@ -11,7 +13,8 @@ int needsSorting(int rangeSize){
         }
 }
 
-
+//Takes an array of values, a starting index, a midpoint index, and an ending index
+//and merges the two values array from the start to the midpoint and from the midpoint to the end together
 void mergeRanges(int* values, int startIndex, int midPoint, int endIndex){
         const int rangeSize = endIndex - startIndex;
         int* destination = (int*) calloc(rangeSize, sizeof(int));
@@ -43,7 +46,7 @@ void mergeRanges(int* values, int startIndex, int midPoint, int endIndex){
                 }
 	free(destination);
         }
-
+//Takes an array of values and sorts the array from startIndex to endIndex in place
 void mergesortRange(int* values, int startIndex,int endIndex){
         int rangeSize = endIndex - startIndex;
         if(needsSorting(rangeSize) == 1){
@@ -53,7 +56,7 @@ void mergesortRange(int* values, int startIndex,int endIndex){
                 mergeRanges(values,startIndex,midPoint,endIndex);
         }
 }
-
+//Calls mergesortRange on the array of a given size
 void mergesort(int size,int* values){
 	mergesortRange(values,0,size);
 }
